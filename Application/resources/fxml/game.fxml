@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="gamePane" prefHeight="474.0" prefWidth="869.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.GameView">
+    <AnchorPane prefHeight="463.0" prefWidth="869.0">
+        <children>
+            <Circle fill="WHITE" layoutX="195.0" layoutY="94.0" radius="39.0" stroke="#ffc947" strokeType="INSIDE" strokeWidth="3.0" />
+            <Label fx:id="secondsLabel" layoutX="194.0" layoutY="75.0" textAlignment="CENTER">
+                <font>
+                    <Font name="Calibri" size="31.0" />
+                </font>
+            </Label>
+            <Label layoutX="174.0" layoutY="104.0" text="seconds">
+                <font>
+                    <Font name="Calibri" size="13.0" />
+                </font>
+            </Label>
+            <Label layoutX="272.0" layoutY="112.0" text="words/min">
+                <font>
+                    <Font name="Calibri" size="13.0" />
+                </font>
+            </Label>
+            <Label layoutX="362.0" layoutY="112.0" text="\% accuracy">
+                <font>
+                    <Font name="Calibri" size="13.0" />
+                </font>
+            </Label>
+            <Label fx:id="wordsPerMinLabel" layoutX="288.0" layoutY="75.0" text="0" textAlignment="CENTER">
+                <font>
+                    <Font name="Calibri" size="31.0" />
+                </font>
+            </Label>
+            <Label fx:id="accuracyLabel" layoutX="384.0" layoutY="75.0" text="0" textAlignment="CENTER">
+                <font>
+                    <Font name="Calibri" size="31.0" />
+                </font>
+            </Label>
+            <ScrollPane hbarPolicy="NEVER" layoutX="69.0" layoutY="144.0" style="-fx-border-color: black;" vbarPolicy="NEVER">
+                <content>
+                    <VBox fx:id="sentenceHolderVBox" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="181.0" prefWidth="465.0" spacing="10.0" style="-fx-background-color: lightgrey; -fx-border-color: black;">
+                        <children>
+                            <Label fx:id="showTextLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="31.0" prefWidth="460.0" text="Text to be shown" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+                                <font>
+                                    <Font size="18.0" />
+                                </font>
+                            </Label>
+                        </children>
+                    </VBox>
+                </content>
+            </ScrollPane>
+            <Label fx:id="textToWriteLabel" alignment="CENTER" layoutX="168.0" layoutY="346.0" prefHeight="36.0" prefWidth="241.0" style="-fx-border-color: black;" text="Label">
+            <font>
+               <Font size="14.0" />
+            </font></Label>
+            <TextField fx:id="typedWordTextField" layoutX="168.0" layoutY="394.0" prefHeight="36.0" prefWidth="241.0" promptText="Type here..." style="-fx-border-color: black;">
+                <font>
+                    <Font size="20.0" />
+                </font>
+            </TextField>
+         <Pane layoutX="554.0" layoutY="144.0" prefHeight="185.0" prefWidth="282.0" style="-fx-border-color: black;">
+            <children>
+               <Label fx:id="opponentNameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="21.0" layoutY="14.0" prefHeight="46.0" prefWidth="241.0" style="-fx-border-color: black;" text="OpponentName">
+                  <font>
+                     <Font size="26.0" />
+                  </font>
+               </Label>
+               <Label layoutX="21.0" layoutY="137.0" text="words/min" textFill="RED">
+                  <font>
+                     <Font name="Calibri" size="13.0" />
+                  </font>
+               </Label>
+               <Label layoutX="203.0" layoutY="137.0" text="\% accuracy" textFill="RED">
+                  <font>
+                     <Font name="Calibri" size="13.0" />
+                  </font>
+               </Label>
+               <Label fx:id="wordsPerMinOpponentLabel" layoutX="40.0" layoutY="100.0" text="0" textAlignment="CENTER">
+                  <font>
+                     <Font name="Calibri" size="31.0" />
+                  </font>
+               </Label>
+               <Label fx:id="accuracyOpponentLabel" layoutX="224.0" layoutY="100.0" text="0" textAlignment="CENTER">
+                  <font>
+                     <Font name="Calibri" size="31.0" />
+                  </font>
+               </Label>
+            </children>
+         </Pane>
+        </children>
+    </AnchorPane>
+    <!-- Countdown overlay -->
+    <VBox fx:id="countdownOverlay" alignment="CENTER" spacing="10" style="-fx-background-color: rgba(0, 0, 0, 0.75);" visible="false">
+        <Label fx:id="countdownLabel" style="-fx-font-size: 48px; -fx-text-fill: white;" text="3" />
+    </VBox>
+   <Button fx:id="leaveQueueButton" mnemonicParsing="false" prefHeight="138.0" prefWidth="287.0" text="LEAVE">
+      <font>
+         <Font size="32.0" />
+      </font>
+   </Button>
+   <Pane fx:id="resultPane" prefHeight="300.0" prefWidth="568.0" style="-fx-background-color: lightblue; -fx-border-color: black;" StackPane.alignment="CENTER">
+      <StackPane.margin>
+         <Insets bottom="80.0" left="150.0" right="150.0" top="80.0" />
+      </StackPane.margin>
+      <children>
+         <Label fx:id="gameResultLabel" alignment="CENTER" layoutX="143.0" layoutY="14.0" prefHeight="36.0" prefWidth="287.0" text="Label">
+            <font>
+               <Font size="24.0" />
+            </font>
+         </Label>
+         <Label layoutX="303.0" layoutY="46.0" prefHeight="36.0" prefWidth="140.0" style="-fx-background-color: darkseagreen;" text="Enemy WPM:">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Label layoutX="303.0" layoutY="87.0" prefHeight="36.0" prefWidth="140.0" style="-fx-background-color: darkseagreen;" text="Enemy Accuracy:">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Label fx:id="opponentWPMResultLabel" alignment="CENTER_RIGHT" layoutX="441.0" layoutY="46.0" prefHeight="36.0" prefWidth="114.0" style="-fx-background-color: darkseagreen;" text="wpm">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Label fx:id="opponentAccuracyResultLabel" alignment="CENTER_RIGHT" layoutX="441.0" layoutY="87.0" prefHeight="36.0" prefWidth="114.0" style="-fx-background-color: darkseagreen;" text="accuracy">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Label layoutX="16.0" layoutY="49.0" prefHeight="36.0" prefWidth="140.0" style="-fx-background-color: cadetblue;" text="Your WPM:">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Label layoutX="16.0" layoutY="90.0" prefHeight="36.0" prefWidth="140.0" style="-fx-background-color: cadetblue;" text="Your Accuracy:">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Label fx:id="yourWPMResultLabel" alignment="CENTER_RIGHT" layoutX="154.0" layoutY="49.0" prefHeight="36.0" prefWidth="114.0" style="-fx-background-color: cadetblue;" text="wpm">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Label fx:id="yourAccuracyResultLabel" alignment="CENTER_RIGHT" layoutX="154.0" layoutY="90.0" prefHeight="36.0" prefWidth="114.0" style="-fx-background-color: cadetblue;" text="accuracy">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Label layoutX="128.0" layoutY="142.0" prefHeight="36.0" prefWidth="164.0" style="-fx-background-color: lightcyan;" text="Current ELO:">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Label layoutX="128.0" layoutY="178.0" prefHeight="36.0" prefWidth="164.0" style="-fx-background-color: lightcyan;" text="ELO change:">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Label fx:id="currentEloResultLabel" alignment="CENTER_RIGHT" layoutX="286.0" layoutY="142.0" prefHeight="36.0" prefWidth="140.0" style="-fx-background-color: lightcyan;" text="cuurentElo">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Label fx:id="eloChangeResultLabel" alignment="CENTER_RIGHT" layoutX="286.0" layoutY="178.0" prefHeight="36.0" prefWidth="140.0" style="-fx-background-color: lightcyan;" text="eloChange">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Button fx:id="resultOKButton" layoutX="186.0" layoutY="220.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="198.0" text="OK">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Button>
+      </children>
+   </Pane>
+</StackPane>
